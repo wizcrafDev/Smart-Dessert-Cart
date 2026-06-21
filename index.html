@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="desserts.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.google.com/specimen/Red+Hat+Text"
+    />
+    <title>Frontend Mentor | Product list with cart</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  </head>
+
+  <body>
+    <h1>Desserts</h1>
+    <div class="container">
+      <div class="dessert-container"></div>
+      <div class="cart">
+        <p class="items-count">Your Cart (0)</p>
+        <div class="cart-container">
+          <img
+            class="empty-img"
+            src="./assets/images/illustration-empty-cart.svg"
+            alt=""
+          />
+          <p>your added item will appear here</p>
+        </div>
+        <div>
+          <img
+            src="/product-list-with-cart-main/assets/images/icon-carbon-neutral.svg"
+            alt=""
+          />
+        </div>
+        <p class="total hidden">Total:</p>
+        <button class="confirm hidden">Confirm Order</button>
+      </div>
+    </div>
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <div class="check-out">
+        <img
+          src="/product-list-with-cart-main/assets/images/icon-order-confirmed.svg"
+          alt=""
+        />
+        <h2>Order Confirmed</h2>
+        <h5>We hope you enjoy your food!</h5>
+        <div class="confirmed-order"></div>
+        <p class="checkout-total"></p>
+        <button class="restart">start new order</button>
+      </div>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <script src="desserts.js"></script>
+  </body>
+</html>

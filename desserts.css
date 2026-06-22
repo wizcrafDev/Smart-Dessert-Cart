@@ -323,7 +323,7 @@ button:hover {
     margin: 10px;
   }
   .confirm {
-    margin-left: 17%;
+    margin-left: 20%;
   }
   .orderItem-div {
     width: 250px;
@@ -335,7 +335,7 @@ button:hover {
     position: absolute;
     bottom: 106px;
     left: 70px;
-    right: auto;
+    right: 83px;
   }
 
   .each-card {

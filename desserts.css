@@ -242,3 +242,103 @@ button:hover {
 .confirmIMG {
   width: 100px;
 }
+@media (max-width: 900px) {
+  /* Stack layout vertically */
+  .container {
+    flex-direction: column;
+  }
+
+  /* Cart becomes full width */
+  .cart {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  /* Dessert area full width */
+  .dessert-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .each-card {
+    flex: 1 1 45%; /* 2 cards per row */
+    max-width: 100%;
+    justify-content: center;
+  }
+  .cart-btn,
+  .cbtn {
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    bottom: 126px;
+  }
+
+  .cart {
+    padding: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .each-card {
+    flex: 1 1 100%; /* 1 card per row */
+    width: 100%;
+    justify-content: center;
+    /* align-items: center; */
+  }
+  .dessertIMG,
+  .selected {
+    width: 95%;
+  }
+  .cart-btn,
+  .cbtn {
+    margin-left: auto;
+    margin-right: auto;
+    /* position: absolute;
+    bottom: 126px;
+    left: auto;
+    right: auto; */
+  }
+  .dessert-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    padding: 10px;
+  }
+
+  .cart {
+    width: 80vw;
+    padding: 10px;
+    margin: 10px;
+  }
+  .confirm {
+    margin-left: 17%;
+  }
+  .orderItem-div {
+    width: 250px;
+  }
+  .cart-btn,
+  .cbtn {
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    bottom: 106px;
+    left: 70px;
+    right: auto;
+  }
+
+  .each-card {
+    font-size: 14px;
+  }
+}

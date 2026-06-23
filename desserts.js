@@ -55,7 +55,7 @@ function renderDisplay(dessertsMenu) {
       </button>`
     }
     <div class="card-details">
-    <p>${dessertsMenu[index].category}</p>
+    <p class="category">${dessertsMenu[index].category}</p>
     <h3>${dessertsMenu[index].name}</h3>
     <p class='price'>$${dessertsMenu[index].price.toFixed(2)}</p>
     </div>
@@ -201,22 +201,27 @@ function renderCart(cart) {
     totalAmount.classList.add("hidden");
 
     renderDisplay(dessertsArray);
+    cartCarbon.classList.add("hidden");
     return;
   }
 
   cart.forEach((item) => {
     cartBox.innerHTML += `
     <div class="orderItem-div">
-      <p>${item.name}</P>
+     <div class="del">
+       <p>${item.name}</P>
+       <button class="eliminate" data-name="${item.name}">X</button>
+     </div>
       <div class="pricetag">
-        <p class="IQ">${item.quantity}x </p> <p class="span">@$${item.price.toFixed(2)}<p>
+        <p class="IQ">${item.quantity}x </p> <p class="span">@$${item.price.toFixed(2)}<p/>
         <P>$${item.price * item.quantity}</p>
       </div>
-    </div>
+    </div>  
     
     `;
     confirmButton.classList.remove("hidden");
     totalAmount.classList.remove("hidden");
+    cartCarbon.classList.remove("hidden");
     const amountTotal = cart.reduce((totalPrice, item) => {
       return totalPrice + item.price * item.quantity;
     }, 0);
@@ -267,19 +272,40 @@ restartButton.addEventListener("click", function startNewOrder() {
   cartCarbon.classList.add("hidden");
   renderDisplay(dessertsArray);
 });
-const closeModalBtn = document.querySelector(".close-modal");
+// const closeModalBtn = document.querySelector(".close-modal");
 
-closeModalBtn.addEventListener("click", function startNewOrder() {
-  cart.length = 0;
+// closeModalBtn.addEventListener("click", function startNewOrder() {
+//   cart.length = 0;
 
-  localStorage.removeItem("cartValue");
+//   localStorage.removeItem("cartValue");
 
-  modal.classList.add("hidden");
-  overlay.classList.add("hidden");
+//   modal.classList.add("hidden");
+//   overlay.classList.add("hidden");
 
-  document.body.style.overflow = "auto";
+//   document.body.style.overflow = "auto";
 
-  renderCart(cart);
-  cartCarbon.classList.add("hidden");
-  renderDisplay(dessertsArray);
+//   renderCart(cart);
+//   cartCarbon.classList.add("hidden");
+//   renderDisplay(dessertsArray);
+// });
+
+cartBox.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("eliminate")) return;
+
+  const itemName = e.target.dataset.name;
+
+  removeItem(itemName);
 });
+
+function removeItem(itemName) {
+  const index = cart.findIndex((item) => {
+    return item.name === itemName;
+  });
+
+  if (index !== -1) {
+    cart.splice(index, 1);
+  }
+
+  saveCart();
+  renderCart(cart);
+}

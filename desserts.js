@@ -8,6 +8,7 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const restartButton = document.querySelector(".restart");
 const checkOutTotal = document.querySelector(".checkout-total");
+const cartCarbon = document.querySelector(".cart-carbon");
 
 let dessertsArray = [];
 async function fetchLocalData() {
@@ -98,6 +99,7 @@ function addToCart(index) {
     cart.push({ ...dessert, quantity: 1 });
   }
   saveCart();
+  cartCarbon.classList.remove("hidden");
   renderCart(cart);
 }
 
@@ -142,6 +144,9 @@ function decrement(index) {
   }
 
   saveCart();
+  if (cart.length === 0) {
+    cartCarbon.classList.add("hidden");
+  }
   renderCart(cart);
 }
 function openModal() {
@@ -168,7 +173,9 @@ function openModal() {
   const amountTotal = cart.reduce((totalPrice, item) => {
     return totalPrice + item.price * item.quantity;
   }, 0);
-  checkOutTotal.textContent = `Order Total:     $${amountTotal.toFixed(2)}`;
+  checkOutTotal.innerHTML = `
+  <p>Order Total</p>
+  <p> $${amountTotal.toFixed(2)}</P>    `;
 }
 function deleteItem() {
   cart.splice(deleteI, 1);
@@ -179,13 +186,17 @@ function renderCart(cart) {
 
   if (cart.length === 0) {
     itemCount.textContent = "Your Cart (0)";
-    totalAmount.textContent = "Total: $0";
+    // totalAmount.innerHTML += `<div class="total hidden">
+    //       <div><p>Order Total:</p></div>
+    //       <div class="TTA">$0.00</div>
+    //     </div>`;
     document.querySelector(".cart-container").innerHTML += `<img
             class="empty-img"
             src="./assets/images/illustration-empty-cart.svg"
             alt=""
           />
-          <p>your added item will appear here</p>`;
+          <p class="empty-info">your added item will appear here</p>`;
+    totalAmount.innerHTML = "";
     confirmButton.classList.add("hidden");
     totalAmount.classList.add("hidden");
 
@@ -198,7 +209,7 @@ function renderCart(cart) {
     <div class="orderItem-div">
       <p>${item.name}</P>
       <div class="pricetag">
-        <p>${item.quantity}x <span>@ $${item.price.toFixed(2)}<span></p>
+        <p class="IQ">${item.quantity}x </p> <p class="span">@$${item.price.toFixed(2)}<p>
         <P>$${item.price * item.quantity}</p>
       </div>
     </div>
@@ -214,10 +225,14 @@ function renderCart(cart) {
     }, 0);
 
     itemCount.textContent = `Your Cart (${totalCount})`;
-    totalAmount.textContent = `Total: $${amountTotal.toFixed(2)}`;
+    totalAmount.innerHTML = `
+          <div><p class="OT">Order Total</p></div>
+          <div class="TTA"><p>$${amountTotal.toFixed(2)}</p></div>
+          `;
 
     console.log(itemCount.innerHTML);
   });
+
   renderDisplay(dessertsArray);
 }
 
@@ -249,6 +264,7 @@ restartButton.addEventListener("click", function startNewOrder() {
 
   // Re-render everything
   renderCart(cart);
+  cartCarbon.classList.add("hidden");
   renderDisplay(dessertsArray);
 });
 const closeModalBtn = document.querySelector(".close-modal");
@@ -264,5 +280,6 @@ closeModalBtn.addEventListener("click", function startNewOrder() {
   document.body.style.overflow = "auto";
 
   renderCart(cart);
+  cartCarbon.classList.add("hidden");
   renderDisplay(dessertsArray);
 });

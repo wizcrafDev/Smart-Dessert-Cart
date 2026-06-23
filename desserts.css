@@ -4,6 +4,8 @@ body {
 }
 h1 {
   margin-left: 30px;
+  margin-bottom: 0%;
+  font-weight: 600;
 }
 .container {
   display: flex;
@@ -33,6 +35,28 @@ h1 {
   height: 240px;
   object-fit: cover;
   border-radius: 20px;
+}
+.empty-info {
+  color: hsl(12, 20%, 44%);
+  font-weight: 510;
+}
+.cart-carbon {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: antiquewhite;
+}
+.checkout-message {
+  text-align: left;
+  padding: 20px;
+}
+.ODM {
+  font-size: 2rem;
 }
 .cart-btn {
   margin-left: auto;
@@ -81,6 +105,7 @@ h1 {
   margin-right: 40px;
   /* padding: 40px; */
   background-color: white;
+  align-items: center;
   /* height: auto; */
 }
 /* .order-img {
@@ -94,7 +119,7 @@ h1 {
   font-weight: 300;
   border-style: none;
   padding: 10px 40px;
-  margin-left: 25%;
+  width: 100%;
 }
 .hidden {
   display: none;
@@ -124,22 +149,28 @@ h1 {
   align-self: flex-start;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+.IQ {
+  color: hsl(14, 86%, 42%);
+  font-weight: 550;
+}
 
-span {
+.span {
   color: gray;
 }
 .pricetag {
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
 }
 .modal {
   position: fixed;
+  justify-content: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  height: 97vh;
-  /* max-height: 80vh; */
+  height: auto;
+  /* max-height: 800px; */
+  /* max-width: 50vw;  */
   padding: 0;
   margin: 0;
   background-color: white;
@@ -159,12 +190,14 @@ span {
 .confirmed-order {
   /* display: flex; */
   margin-left: 10px;
-  padding: 40px 10px;
+  padding: 20px 10px;
   height: auto;
   max-height: 40vh;
   overflow-y: auto;
 }
 .checkout-total {
+  display: flex;
+  justify-content: space-between;
   font-weight: 600;
   font-size: 1.2rem;
 }
@@ -236,11 +269,28 @@ button:hover {
   padding: 3px;
 }
 .total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.OT {
+  font-size: 0.9rem;
+}
+.TTA {
+  font-weight: 650;
   font-size: 25px;
-  font-weight: 600;
 }
 .confirmIMG {
   width: 100px;
+}
+@media (max-width: 1000px) {
+  .orderItem-div {
+    width: 200px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+  }
 }
 @media (max-width: 900px) {
   /* Stack layout vertically */
@@ -291,12 +341,12 @@ button:hover {
   }
   .cart-btn,
   .cbtn {
-    margin-left: auto;
-    margin-right: auto;
-    /* position: absolute;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    position: absolute;
     bottom: 126px;
-    left: auto;
-    right: auto; */
+    left: 30px;
+    right: 45px;
   }
   .dessert-container {
     display: flex;
@@ -321,9 +371,6 @@ button:hover {
     width: 80vw;
     padding: 10px;
     margin: 10px;
-  }
-  .confirm {
-    margin-left: 20%;
   }
   .orderItem-div {
     width: 250px;
